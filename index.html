@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ann Mariya Baby | Portfolio</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:linear-gradient(to bottom right,#0f172a,#1e1b4b,#312e81);
+      color:white;
+      overflow-x:hidden;
+    }
+
+    header{
+      width:100%;
+      padding:20px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      z-index:1000;
+      background:rgba(15,23,42,0.85);
+      backdrop-filter:blur(10px);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#a5b4fc;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:white;
+      margin-left:25px;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:#a5b4fc;
+    }
+
+    section{
+      min-height:100vh;
+      padding:120px 10% 50px;
+    }
+
+    .home{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:40px;
+    }
+
+    .home-text{
+      flex:1;
+    }
+
+    .home-text h1{
+      font-size:55px;
+      margin-bottom:10px;
+    }
+
+    .home-text h3{
+      font-size:28px;
+      color:#c4b5fd;
+      margin-bottom:20px;
+    }
+
+    .home-text p{
+      max-width:600px;
+      line-height:1.8;
+      color:#d1d5db;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:25px;
+      padding:12px 28px;
+      background:#6366f1;
+      color:white;
+      border-radius:30px;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:600;
+      margin-right:10px;
+    }
+
+    .btn:hover{
+      background:#8b5cf6;
+      transform:scale(1.05);
+    }
+
+    .home-img{
+      flex:1;
+      display:flex;
+      justify-content:center;
+    }
+
+    .home-img img{
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      object-fit:cover;
+      border:5px solid #818cf8;
+      box-shadow:0 0 30px rgba(129,140,248,0.7);
+      transition:0.5s;
+    }
+
+    .home-img img:hover{
+      transform:scale(1.05);
+    }
+
+    .title{
+      font-size:40px;
+      margin-bottom:30px;
+      text-align:center;
+      color:#c4b5fd;
+    }
+
+    .projects-container,
+    .activities-container,
+    .about-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.08);
+      padding:25px;
+      border-radius:20px;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(8px);
+      cursor:pointer;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 20px rgba(129,140,248,0.5);
+    }
+
+    .card h3{
+      color:#a5b4fc;
+      margin-bottom:15px;
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:15px;
+      margin-top:20px;
+    }
+
+    .skill{
+      background:#4338ca;
+      padding:10px 18px;
+      border-radius:30px;
+      font-size:14px;
+    }
+
+    .contact{
+      text-align:center;
+    }
+
+    .contact p{
+      margin:10px 0;
+      color:#d1d5db;
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      background:rgba(0,0,0,0.3);
+      color:#cbd5e1;
+    }
+
+    /* POPUP */
+
+    .popup{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.7);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:2000;
+      padding:20px;
+    }
+
+    .popup-content{
+      background:linear-gradient(to bottom right,#1e1b4b,#312e81);
+      padding:30px;
+      width:90%;
+      max-width:700px;
+      border-radius:20px;
+      position:relative;
+      box-shadow:0 0 25px rgba(129,140,248,0.5);
+      max-height:90vh;
+      overflow-y:auto;
+    }
+
+    .popup-content h2{
+      color:#c4b5fd;
+      margin-bottom:20px;
+    }
+
+    .popup-content ul{
+      padding-left:20px;
+      margin-top:15px;
+    }
+
+    .popup-content li{
+      margin-bottom:10px;
+      color:#d1d5db;
+    }
+
+    .close-btn{
+      position:absolute;
+      top:10px;
+      right:20px;
+      font-size:30px;
+      cursor:pointer;
+    }
+
+    @media(max-width:900px){
+
+      .home{
+        flex-direction:column-reverse;
+        text-align:center;
+      }
+
+      nav{
+        display:none;
+      }
+
+      .home-text h1{
+        font-size:42px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">Ann Mariya</div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#projects">Projects</a>
+      <a href="#activities">Activities</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </header>
+
+  <!-- HOME -->
+
+  <section class="home" id="home">
+
+    <div class="home-text">
+
+      <h1>Hello, I'm Ann Mariya Baby</h1>
+
+      <h3>MCA Student | Python & Java Developer</h3>
+
+      <p>
+        MCA student passionate about software development,
+        Machine Learning, leadership, and modern technologies.
+        I enjoy building impactful projects and learning new skills.
+      </p>
+
+      <a href="#contact" class="btn">
+        Contact Me
+      </a>
+
+      <a href="resume.pdf" download class="btn">
+        Download Resume
+      </a>
+
+    </div>
+
+    <div class="home-img">
+      <img src="photo.jpg" alt="Ann Mariya Photo">
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="title">About Me</h2>
+
+    <div class="about-container">
+
+      <div class="card">
+
+        <h3>Education</h3>
+
+        <p>
+          <b>MCA</b><br>
+          AIMIT Mangalore<br>
+          2025 - 2027
+        </p>
+
+        <br>
+
+        <p>
+          <b>BCA</b><br>
+          Assumption College Autonomous<br>
+          2022 - 2025
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Technical Skills</h3>
+
+        <div class="skills">
+
+          <span class="skill">Python</span>
+          <span class="skill">Java</span>
+          <span class="skill">C</span>
+          <span class="skill">C++</span>
+          <span class="skill">Machine Learning</span>
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">SQL</span>
+          <span class="skill">DBMS</span>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Soft Skills</h3>
+
+        <p>
+          Leadership, Communication Skills,
+          Teamwork, Problem Solving,
+          Time Management
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CERTIFICATES -->
+        
+
+    
+
+  <section id="certificates">
+
+  <h2 class="title">Certificates</h2>
+
+  <div class="projects-container">
+
+    <!-- AI FOR ALL -->
+
+    <div class="card">
+
+      <h3>Artificial Intelligence for All</h3>
+
+      <p>
+        Infosys Springboard Certification
+      </p>
+
+      <button class="btn certificate-btn"
+        data-img="certificates/aiforall.jpeg">
+
+        View Certificate
+
+      </button>
+
+    </div>
+
+    <!-- BASICS OF PYTHON -->
+
+    <div class="card">
+
+      <h3>Basics of Python</h3>
+
+      <p>
+        Infosys Springboard Certification
+      </p>
+
+      <button class="btn certificate-btn"
+        data-img="certificates/basicsofpython.jpeg">
+
+        View Certificate
+
+      </button>
+
+    </div>
+
+    <!-- INTRO TO AI -->
+
+    <div class="card">
+
+      <h3>Introduction to AI</h3>
+
+      <p>
+        Infosys Springboard Certification
+      </p>
+
+      <button class="btn certificate-btn"
+        data-img="certificates/introai.jpeg">
+
+        View Certificate
+
+      </button>
+
+    </div>
+
+    <!-- MACHINE LEARNING -->
+
+    <div class="card">
+
+      <h3>Machine Learning</h3>
+
+      <p>
+        Great Learning Certification
+      </p>
+
+      <button class="btn certificate-btn"
+        data-img="certificates/ml.jpeg">
+
+        View Certificate
+
+      </button>
+
+    </div>
+
+    <!-- ICFOSS -->
+
+    <div class="card">
+
+      <h3>Introduction to Python</h3>
+
+      <p>
+        ICFOSS Certification
+      </p>
+
+      <button class="btn certificate-btn"
+        data-img="certificates/icfoss-python.jpeg">
+
+        View Certificate
+
+      </button>
+
+    </div>
+
+    <!-- NPTEL -->
+
+    <div class="card">
+
+      <h3>Cyber Security & Privacy</h3>
+
+      <p>
+        NPTEL Certification
+      </p>
+
+      <button class="btn certificate-btn"
+        data-img="certificates/nptel1.jpeg">
+
+        View Certificate
+
+      </button>
+
+    </div>
+
+  </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+<!-- PROJECTS -->
+
+<section id="projects">
+
+  <h2 class="title">Projects</h2>
+
+  <div class="projects-container">
+
+    <!-- AI CHROME EXTENSION -->
+
+    <div class="card">
+
+      <h3>AI-Powered Webpage Summarizer</h3>
+
+      <p>
+        Chrome Extension using Groq LLM APIs
+        for AI-powered webpage summarization.
+      </p>
+
+      <button class="btn project-details-btn"
+        data-project="ai-project">
+
+        View Details
+
+      </button>
+
+      
+
+    </div>
+
+    <!-- DISEASE PREDICTION -->
+
+    <div class="card">
+
+      <h3>Disease Prediction System</h3>
+
+      <p>
+        ML-based hospital management system
+        using Random Forest algorithm.
+      </p>
+
+      <button class="btn project-details-btn"
+        data-project="disease-project">
+
+        View Details
+
+      </button>
+
+    </div>
+
+    <!-- HOSPITAL MANAGEMENT -->
+
+    <div class="card">
+
+      <h3>Hospital Management System</h3>
+
+      <p>
+        Java-based project for appointments
+        and patient records.
+      </p>
+
+      <button class="btn project-details-btn"
+        data-project="hospital-project">
+
+        View Details
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+  <!-- ACTIVITIES -->
+
+<section id="activities">
+
+  <h2 class="title">Leadership & Activities</h2>
+
+  <div class="activities-container">
+
+    <!-- UNION -->
+
+    <div class="card">
+
+      <h3>University Union Councillor</h3>
+
+      <p>
+        Student leadership activities.
+      </p>
+
+      <button class="btn union-btn"
+        data-img="activities/union.jpg">
+
+        View Details
+
+      </button>
+
+    </div>
+
+    <!-- NSS -->
+
+    <div class="card">
+
+      <h3>NSS Member</h3>
+
+      <p>
+        Social service and volunteering.
+      </p>
+
+      <button class="btn union-btn"
+        data-img="activities/nss.jpg">
+
+        View Details
+
+      </button>
+
+    </div>
+
+    <!-- ASSOCIATION -->
+
+    <div class="card">
+
+      <h3>Association Secretary</h3>
+
+      <p>
+        Department coordination activities.
+      </p>
+
+      <button class="btn union-btn"
+        data-img="activities/association.jpg">
+
+        View Details
+
+      </button>
+
+    </div>
+    <!-- WELLNESS CENTRE -->
+
+<div class="card">
+
+  <h3>AIMIT Wellness Centre President</h3>
+
+  <p>
+    Student wellness and leadership activities.
+  </p>
+
+  <button class="btn union-btn"
+    data-img="activities/wellness.jpeg">
+
+    View Details
+
+  </button>
+
+</div>
+<!-- SQAC -->
+
+
+
+<div class="card">
+
+  <h3>Student Quality Assurance Cell Member</h3>
+
+  <p>
+    Academic quality and student engagement activities.
+  </p>
+
+  <button class="btn">
+
+    View Details
+
+  </button>
+
+</div>
+
+<!-- MAGAZINE -->
+
+<div class="card">
+
+  <h3>College Magazine Content Writer</h3>
+
+  <p>
+    Content writing for college magazine ""നാഴിക"".
+  </p>
+
+  <button class="btn">
+
+    View Details
+
+  </button>
+
+</div>
+
+    <!-- HACKATHON -->
+
+    <div class="card">
+
+      <h3>Hackathon Participation</h3>
+
+      <p>
+        Christ University Bangalore.
+      </p>
+
+      <button class="btn union-btn"
+        data-img="activities/hackathon.jpg">
+
+        View Details
+
+      </button>
+
+    </div>
+    <!-- IDEATHON -->
+
+<div class="card">
+
+  <h3>INNOVISION 2026 Ideathon</h3>
+
+  <p>
+    8-Hour Ideathon conducted at AIMIT.
+  </p>
+
+  <button class="btn ideathon-btn"
+    data-img="activities/ideathon.jpg">
+
+    View Details
+
+  </button>
+
+</div>
+<!-- EPITOME -->
+
+<div class="card">
+
+  <h3>Epitome 2026 Coordinator</h3>
+
+  <p>
+    Student Coordinator at Epitome 2026.
+  </p>
+
+  <button class="btn epitome-btn">
+
+    View Details
+
+  </button>
+
+</div>
+
+  </div>
+
+</section>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <h2 class="title">Contact Me</h2>
+
+    <p>Email: annmariyababy13@gmail.com</p>
+    <p>Phone: 9544693813</p>
+    <p>Location: Kannur, Kerala</p>
+
+    <div style="margin-top:30px;">
+
+      <!-- LINKEDIN -->
+
+      <a href="https://www.linkedin.com/in/ann-mariya-baby"
+        target="_blank"
+        class="btn">
+
+        <i class="fab fa-linkedin"></i>
+        LinkedIn
+
+      </a>
+
+      <!-- GITHUB -->
+
+      <a href="https://github.com/your-github-id"
+        target="_blank"
+        class="btn">
+
+        <i class="fab fa-github"></i>
+        GitHub
+
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p>© 2026 Ann Mariya Baby | Portfolio Website</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+  // CERTIFICATE BUTTONS
+
+  const certificateButtons =
+    document.querySelectorAll('.certificate-btn');
+
+  certificateButtons.forEach(button => {
+
+    button.addEventListener('click', (e) => {
+
+      e.stopPropagation();
+
+      const img = button.getAttribute('data-img');
+
+      const popup = document.createElement('div');
+
+      popup.classList.add('popup');
+
+      popup.innerHTML = `
+
+        <div class="popup-content">
+
+          <span class="close-btn">&times;</span>
+
+          <img src="${img}"
+            style="
+              width:100%;
+              border-radius:15px;
+            ">
+
+        </div>
+
+      `;
+
+      document.body.appendChild(popup);
+
+      popup.querySelector('.close-btn').onclick = () => {
+        popup.remove();
+      };
+
+      popup.onclick = (e) => {
+        if(e.target === popup){
+          popup.remove();
+        }
+      };
+
+    });
+
+  });
+
+  // PROJECT DETAILS BUTTON
+
+  document.addEventListener('click', function(e){
+
+    if(e.target.classList.contains('project-details-btn')){
+
+      e.stopPropagation();
+
+      const project = e.target.getAttribute('data-project');
+
+      const popup = document.createElement('div');
+
+      popup.classList.add('popup');
+
+      let content = '';
+
+      // AI PROJECT
+
+      if(project === 'ai-project'){
+
+  content = `
+
+    <h2>AI-Powered Webpage Summarizer 🚀</h2>
+
+    <div style="
+      margin-top:15px;
+      line-height:2;
+      color:#d1d5db;
+      text-align:justify;
+    ">
+
+      <p>
+
+        Built an AI-Powered Chrome Extension that extracts webpage
+        content and generates concise AI-powered summaries directly
+        inside the browser using Groq LLM APIs.
+
+      </p>
+
+      <p>
+
+        <b>Tech Stack:</b><br>
+
+        • JavaScript<br>
+        • HTML/CSS<br>
+        • Chrome Extension APIs<br>
+        • Groq API<br>
+        • Llama 3.1 Models
+
+      </p>
+
+      <p>
+
+        <b>Features:</b><br>
+
+        ✅ Instant webpage summarization<br>
+        ✅ AI-generated concise summaries<br>
+        ✅ Fast response using Groq API<br>
+        ✅ Chrome extension popup interface
+
+      </p>
+
+      <p>
+
+        Through this project, I gained hands-on experience in
+        Chrome Extension Development, API Integration,
+        AI/LLM Integration, DOM Manipulation,
+        and real-world AI application development.
+
+      </p>
+
+      <p>
+
+        <b>How to Use:</b><br>
+
+        1. Clone/download the repository<br>
+        2. Create a free Groq API key<br>
+        3. Add the API key inside popup.js<br>
+        4. Open chrome://extensions<br>
+        5. Enable Developer Mode<br>
+        6. Click “Load unpacked” and select the project folder<br>
+        7. Open any webpage and click “Summarize Page”
+
+      </p>
+
+      <a href="https://github.com/annmariyababy715-beep/ai-webpage-summarizer"
+        target="_blank"
+        class="btn"
+        style="margin-top:20px;">
+
+        View GitHub
+
+      </a>
+
+    </div>
+
+  `;
+}
+      // DISEASE PROJECT
+
+      else if(project === 'disease-project'){
+
+        content = `
+
+          <h2>Disease Prediction System</h2>
+
+          <div style="
+            margin-top:15px;
+            line-height:2;
+            color:#d1d5db;
+            text-align:justify;
+          ">
+
+            <p>
+
+              Developed an AI/ML-based Disease Prediction System
+              for hospitals using Python and Machine Learning.
+
+            </p>
+
+            <p>
+
+              The project predicts diseases such as diabetes,
+              lung disease, and other health conditions
+              using the Random Forest algorithm.
+
+            </p>
+
+            <p>
+
+              The system includes modules for Admin,
+              Medical Admin, Doctor, and Patient.
+
+            </p>
+
+            <p>
+
+              This project helped me gain experience in
+              Machine Learning, Database Management,
+              Backend Development, and Healthcare Applications.
+
+            </p>
+
+          </div>
+
+        `;
+      }
+
+      // HOSPITAL PROJECT
+
+      else if(project === 'hospital-project'){
+
+        content = `
+
+          <h2>Hospital Management System</h2>
+
+          <div style="
+            margin-top:15px;
+            line-height:2;
+            color:#d1d5db;
+            text-align:justify;
+          ">
+
+            <p>
+
+              Developed a Hospital Management System
+              to manage patient records, appointments,
+              and hospital operations efficiently.
+
+            </p>
+
+            <p>
+
+              The project was built using Java
+              with database integration for storing
+              patient and appointment information.
+
+            </p>
+
+            <p>
+
+              The system improves hospital workflow
+              and simplifies patient management processes.
+
+            </p>
+
+            <p>
+
+              Through this project, I improved my
+              programming, database management,
+              and software development skills.
+
+            </p>
+
+          </div>
+
+        `;
+      }
+
+      popup.innerHTML = `
+
+        <div class="popup-content">
+
+          <span class="close-btn">&times;</span>
+
+          ${content}
+
+        </div>
+
+      `;
+
+      document.body.appendChild(popup);
+
+      popup.querySelector('.close-btn').onclick = () => {
+        popup.remove();
+      };
+
+      popup.onclick = (event) => {
+        if(event.target === popup){
+          popup.remove();
+        }
+      };
+
+    }
+
+  });
+
+  // NORMAL CARD POPUPS
+
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+
+  card.addEventListener('click', (e) => {
+
+    if(
+  e.target.classList.contains('project-details-btn') ||
+  e.target.classList.contains('certificate-btn')
+){
+  return;
+}
+    
+    const title = card.querySelector('h3').innerText;
+
+    const popup = document.createElement('div');
+
+    popup.classList.add('popup');
+
+    popup.innerHTML = `
+
+      <div class="popup-content">
+
+        <span class="close-btn">&times;</span>
+
+        <h2>${title}</h2>
+
+        <div>
+          ${getExtraDetails(title)}
+        </div>
+
+      </div>
+
+    `;
+
+    document.body.appendChild(popup);
+
+    popup.querySelector('.close-btn').onclick = () => {
+      popup.remove();
+    };
+
+    popup.onclick = (e) => {
+      if (e.target === popup) {
+        popup.remove();
+      }
+    };
+
+  });
+
+});
+
+// DETAILS FUNCTION
+
+function getExtraDetails(title){
+
+  switch(title){
+
+    case 'University Union Councillor':
+
+      return `
+
+        <img src="activities/union.jpeg"
+          style="
+            width:100%;
+            border-radius:15px;
+            margin-bottom:20px;
+          ">
+
+        <p>
+          Served as University Union Councillor during 2023-2024, PRAGATHI.
+          This experience improved my leadership, teamwork,
+          communication, and organizational skills.
+        </p>
+
+      `;
+
+    case 'NSS Member':
+
+      return `
+
+        <img src="activities/nss.jpeg"
+          style="
+            width:100%;
+            border-radius:15px;
+            margin-bottom:20px;
+          ">
+
+        <p>
+          Served as an NSS Volunteer during 2022-2025 and actively
+          participated in social service and community development activities.
+        </p>
+
+      `;
+
+    case 'Association Secretary':
+
+      return `
+
+        <p>
+
+          Served as the Association Secretary of the Department
+          of Computer Science during 2023-2024.
+
+        </p>
+
+      `;
+      case 'AIMIT Wellness Centre President':
+
+  return `
+
+    <img src="activities/wellness.jpeg"
+      style="
+        width:100%;
+        border-radius:15px;
+        margin-bottom:20px;
+      ">
+
+    <div style="
+      margin-top:15px;
+      line-height:2;
+      color:#d1d5db;
+      text-align:justify;
+    ">
+
+      <p>
+
+        Honored to serve as the President of the AIMIT Wellness Centre.
+        This role gave me the opportunity to promote student wellbeing,
+        teamwork, leadership, and positive engagement within the campus community.
+
+      </p>
+
+      <p>
+
+        Through various activities and initiatives, I actively participated
+        in encouraging wellness, collaboration, and student involvement
+        in meaningful programs and events.
+
+      </p>
+
+      <p>
+
+        This experience helped me improve my leadership,
+        communication, coordination, and organizational skills
+        while working closely with students and faculty members.
+
+      </p>
+
+      <p>
+
+        Serving as the Wellness Centre President was a valuable and
+        inspiring journey that contributed greatly to my personal
+        and professional growth.
+
+      </p>
+
+    </div>
+
+  `;
+  case 'Student Quality Assurance Cell Member':
+
+  return `
+
+    <div style="
+      margin-top:15px;
+      line-height:2;
+      color:#d1d5db;
+      text-align:justify;
+    ">
+
+      <p>
+
+        Served as a Student Quality Assurance Cell (SQAC) Member
+        and actively participated in activities focused on improving
+        academic quality, student involvement, and institutional development.
+
+      </p>
+
+      <p>
+
+        Being part of SQAC provided me with opportunities to
+        coordinate with faculty members and students while contributing
+        to quality enhancement initiatives within the institution.
+
+      </p>
+
+      <p>
+
+        This experience helped me strengthen my communication,
+        teamwork, leadership, and organizational skills through
+        active participation in academic and student-centered programs.
+
+      </p>
+
+      <p>
+
+        It was a valuable experience that allowed me to understand
+        the importance of quality assurance, collaboration,
+        and continuous improvement in an educational environment.
+
+      </p>
+
+    </div>
+
+  `;
+  case 'College Magazine Content Writer':
+
+  return `
+
+    <div style="
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+      margin-bottom:20px;
+    ">
+
+      <img src="activities/nazhika1.jpeg"
+        style="
+          width:100%;
+          border-radius:15px;
+        ">
+
+      <img src="activities/nazhika2.jpeg"
+        style="
+          width:100%;
+          border-radius:15px;
+        ">
+
+    </div>
+
+    <div style="
+      margin-top:15px;
+      line-height:2;
+      color:#d1d5db;
+      text-align:justify;
+    ">
+
+      <p>
+
+        Contributed as a content writer for the college magazine
+        "നാഴിക"(Nazhika) and had the opportunity to express thoughts
+        and ideas through creative writing.
+
+      </p>
+
+      <p>
+
+        My article titled <b>"Let Them Speak Up"</b>
+        focused on encouraging individuals to express their voices,
+        opinions, and emotions confidently.
+
+      </p>
+
+      <p>
+
+        This experience enhanced my creativity, writing skills,
+        and confidence in expressing meaningful ideas through content.
+
+      </p>
+
+    </div>
+
+  `;
+
+
+    case 'Hackathon Participation':
+
+      return `
+
+        <img src="activities/hackathon1.png"
+          style="
+            width:100%;
+            border-radius:15px;
+            margin-bottom:20px;
+          ">
+
+        <p>
+
+          Participated in GATEWAYS 2025,
+          an International-level IT Fest conducted at
+          CHRIST University Bangalore.
+
+        </p>
+
+      `;
+
+    case 'INNOVISION 2026 Ideathon':
+
+      return `
+
+        <img src="activities/ideathon1.png"
+          style="
+            width:100%;
+            border-radius:15px;
+            margin-bottom:20px;
+          ">
+
+        <p>
+
+          Participated in the 8-Hour Ideathon - INNOVISION 2026
+          organized at AIMIT Beeri.
+
+        </p>
+
+      `;
+
+    case 'Epitome 2026 Coordinator':
+
+      return `
+
+        <img src="activities/epitome.jpeg"
+          style="
+            width:100%;
+            border-radius:15px;
+            margin-bottom:20px;
+          ">
+
+        <p>
+
+          Served as Student Coordinator for Epitome 2026
+          at St. Aloysius (Deemed to be University), AIMIT Centre.
+
+        </p>
+
+      `;
+
+    default:
+
+      return '';
+
+  }
+
+}
+
+  </script>
+</body>
+</html>
